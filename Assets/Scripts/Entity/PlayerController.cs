@@ -7,10 +7,40 @@ public class PlayerController : BaseController
     private Camera _camera;
     [SerializeField] private float interactionRange = 1.5f;
 
+    public bool isPlayed = false;
+
+    //UIManager uIManager;
+    //GameManager gameManager;
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     protected override void Start()
     {
-        base.Start();
-        _camera = Camera.main;   
+        if (PlayerPrefs.HasKey("PlayerPosX"))
+        {
+            float x = PlayerPrefs.GetFloat("PlayerPosX");
+            float y = PlayerPrefs.GetFloat("PlayerPosY");
+            float z = PlayerPrefs.GetFloat("PlayerPosZ");
+            PlayerPrefs.DeleteKey("PlayerPosX");
+            PlayerPrefs.DeleteKey("PlayerPosY");
+            PlayerPrefs.DeleteKey("PlayerPosZ");
+
+            transform.position = new Vector3(x, y, z);
+
+            //미니게임 결과창 띄우기
+            //TODO: 기존 최고 점수 띄우기
+            //TODO: 마지막에 플레이한 점수 띄우기
+            //TODO: 확인버튼(UI창 닫아짐)
+            //gameManager.ResultMiniGame();
+
+        }
+        else
+        {
+            base.Start();
+        }
+        _camera = Camera.main;
     }
 
     protected override void HandleAction()

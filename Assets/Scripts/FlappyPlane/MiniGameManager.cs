@@ -5,39 +5,67 @@ using UnityEngine.SceneManagement;
 
 public class MiniGameManager : MonoBehaviour
 {
-    static MiniGameManager gameManager;
-    public static MiniGameManager Instance { get { return gameManager; } }
+    static MiniGameManager miniGameManager;
+    public static MiniGameManager Instance { get { return miniGameManager; } }
 
     private int currentScore = 0;
 
-    UIManager uiManager;
-    public UIManager UIManager { get { return uiManager; } }
+    FlappyUIManager uiManager;
+    public FlappyUIManager UIManager { get { return uiManager; } }
+
+    public static bool isFirstLoading  = true;
+    public bool IsFirstLoading { get; set; }
+
 
     private void Awake()
     {
-        gameManager = this;
-        uiManager = FindObjectOfType<UIManager>();
+        miniGameManager = this;
+        uiManager = FindObjectOfType<FlappyUIManager>();
     }
+
     private void Start()
     {
-        uiManager.UpdateScore(0);
+        if (!isFirstLoading)
+        {
+            StartGame();
+        }
+        else
+        {
+            isFirstLoading = false;
+        }
+        
+    }
+
+    public void StartGame()
+    {
+        uiManager.SetPlayGame();
     }
 
     public void GameOver()
     {
-        Debug.Log("Game Over");
+        if (PlayerPrefs.HasKey("Flappy_BestScore"))
+        {
+            if(PlayerPrefs.GetInt("Flappy_BestScore") < currentScore)
+            {
+                PlayerPrefs.SetInt("Flappy_BestScore", currentScore);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Flappy_BestScore", currentScore);
+        }
+        PlayerPrefs.SetInt("Flappy_LastScore",currentScore);
+        uiManager.ChangeCurrentScore(currentScore);
+        uiManager.ChangeBestScore(PlayerPrefs.GetInt("Flappy_BestScore"));
         uiManager.SetRestart();
     }
 
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+
 
     public void AddScore(int score)
     {
         currentScore += score;
         Debug.Log($"Score: {currentScore}");
-        uiManager.UpdateScore(currentScore);
+        uiManager.ChangeScore(currentScore);
     }
 }
