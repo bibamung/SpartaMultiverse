@@ -16,6 +16,8 @@ public class MiniGameManager : MonoBehaviour
     public static bool isFirstLoading  = true;
     public bool IsFirstLoading { get; set; }
 
+    public FlappyPlayer player;
+
 
     private void Awake()
     {
@@ -64,6 +66,10 @@ public class MiniGameManager : MonoBehaviour
 
     public void AddScore(int score)
     {
+        if (player.isDead)
+        {
+            return;
+        }
         currentScore += score;
         Debug.Log($"Score: {currentScore}");
         uiManager.ChangeScore(currentScore);

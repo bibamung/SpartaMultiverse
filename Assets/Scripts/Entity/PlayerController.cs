@@ -9,11 +9,18 @@ public class PlayerController : BaseController
 
     public bool isPlayed = false;
 
+    Rigidbody2D rigidbody;
+    Vector3 dirVec;
     UIManager uIManager;
     GameManager gameManager;
+
+    GameObject scanObject;
+
     protected override void Awake()
     {
         base.Awake();
+        rigidbody = GetComponent<Rigidbody2D>();
+        gameManager = GameManager.instance;
     }
 
     protected override void Start()
@@ -39,10 +46,10 @@ public class PlayerController : BaseController
 
     protected override void HandleAction()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertial = Input.GetAxisRaw("Vertical");
+        float horizontal = GameManager.instance.isAction ? 0f : Input.GetAxisRaw("Horizontal");
+        float vertial = GameManager.instance.isAction ? 0f : Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2(horizontal, vertial).normalized;
-
+        
         if (Input.GetKeyDown(KeyCode.G))
         {
             TryInteract();

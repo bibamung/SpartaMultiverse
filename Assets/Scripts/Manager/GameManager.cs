@@ -1,29 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    static GameManager gameManager;
-    public static GameManager Instance { get { return gameManager; } }
+    public static GameManager instance { get; private set; }
+    public TalkManager talkManager;
 
-    //private int currentScore = 0;
+    //public TextMeshProUGUI talkText;
+    public TypeEffect talk;
 
-    UIManager uiManager;
-    public UIManager UIManager { get { return uiManager; } }
+    public GameObject scanObject;
+    public GameObject dialogPanel;
+    public Image npcImage;
+    public int talkIndex;
 
-    public PlayerController player;
+    public bool isAction;
 
-    protected void Awake()
+    private void Awake()
     {
-        gameManager = this;
-        player = GetComponent<PlayerController>();
-        uiManager = FindObjectOfType<UIManager>();
+        isAction = false;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-/*
-    public void ResultMiniGame()
+    public void Action(GameObject scanObj)
     {
-        uiManager.SetResultMainScene();
-    }*/
+        //isAction = true;            
+        scanObject = scanObj;
 
+        Debug.Log("오브젝트 이름: " + scanObject.name);
+
+        Talk(scanObject.name);
+        
+        dialogPanel.SetActive(isAction);
+    }
+
+
+    void Talk(string name)
+    {
+        string talkData = talkManager.GetTalk(name, talkIndex);
+
+        npcImage.color = new Color(1,1,1,1);
+        npcImage.sprite = talkManager.GetSprite(name);
+
+        if (talkData == null)
+        {
+            isAction = false;
+            talkIndex = 0;
+            return;
+        }
+        talk.SetMsg(talkData);
+        //talkText.text = talkData;
+        isAction = true;
+        talkIndex++;
+    }
 }
