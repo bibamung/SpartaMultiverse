@@ -9,8 +9,8 @@ public class PlayerController : BaseController
 
     public bool isPlayed = false;
 
-    //UIManager uIManager;
-    //GameManager gameManager;
+    UIManager uIManager;
+    GameManager gameManager;
     protected override void Awake()
     {
         base.Awake();
@@ -18,6 +18,7 @@ public class PlayerController : BaseController
 
     protected override void Start()
     {
+        base.Start();
         if (PlayerPrefs.HasKey("PlayerPosX"))
         {
             float x = PlayerPrefs.GetFloat("PlayerPosX");
@@ -28,13 +29,6 @@ public class PlayerController : BaseController
             PlayerPrefs.DeleteKey("PlayerPosZ");
 
             transform.position = new Vector3(x, y, z);
-
-            //미니게임 결과창 띄우기
-            //TODO: 기존 최고 점수 띄우기
-            //TODO: 마지막에 플레이한 점수 띄우기
-            //TODO: 확인버튼(UI창 닫아짐)
-            //gameManager.ResultMiniGame();
-
         }
         else
         {
@@ -59,6 +53,7 @@ public class PlayerController : BaseController
     private void TryInteract()
     {
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, interactionRange);
+
         foreach (Collider2D collider in hitColliders)
         {
             IInteractable interactable = collider.GetComponent<IInteractable>();

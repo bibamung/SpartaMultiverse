@@ -36,7 +36,7 @@ public class MiniGameResultUI : MonoBehaviour
         return UIState.Result;
     }*/
 
-    public GameObject resultPanel; // UI 패널
+    public GameObject resultPanel; // UI 패널x
 
     void Start()
     {
