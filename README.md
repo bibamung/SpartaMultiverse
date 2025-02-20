@@ -19,13 +19,13 @@
     - [ ]  탑승물 제작
     - [x]  NPC와 대화 시스템
 
-
-[!note]- 조작 키
-> 이동키 : W,A,S,D or 방향키
-> 상호작용 키 : G키
-> FlappyPlane 점프키: space or 마우스 우클릭
-> 바베큐 게임키 (음식 찌르기게임): 1P → W키,  2P → ↑ 윗방향키
-
+```
+- 조작 키
+    - 이동키 : W,A,S,D or 방향키
+    - 상호작용 키 : G키
+    - FlappyPlane 점프키: space or 마우스 우클릭
+    - 바베큐 게임키 (음식 찌르기게임): 1P → W키,  2P → ↑ 윗방향키
+```
 
 
 - 트러블 슈팅
@@ -33,13 +33,11 @@
     https://worni5015.tistory.com/10
     
 
-- 에셋 및 사운드 출처
-
-
 ```
-- 01 Little-fairy-garden - https://youtu.be/zUBJ7agRonA
-- Sprout Lands - https://cupnooble.itch.io/sprout-lands-asset-pack - 캐릭터 에셋
-- Sprout Lands UI - https://cupnooble.itch.io/sprout-lands-ui-pack
-- Barbecue Meat - https://spiderbr0.itch.io/32x-pixel-raw-meat
-- Barbecue Crops - https://im-simpl.itch.io/simpl-veggies
+- 에셋 및 사운드 출처
+    - 01 Little-fairy-garden - https://youtu.be/zUBJ7agRonA
+    - Sprout Lands - https://cupnooble.itch.io/sprout-lands-asset-pack - 캐릭터 에셋
+    - Sprout Lands UI - https://cupnooble.itch.io/sprout-lands-ui-pack
+    - Barbecue Meat - https://spiderbr0.itch.io/32x-pixel-raw-meat
+    - Barbecue Crops - https://im-simpl.itch.io/simpl-veggies
 ```
