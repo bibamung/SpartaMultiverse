@@ -19,7 +19,7 @@ public class TalkManager : MonoBehaviour
 
     public void GenerateData()
     {
-        talkData.Add("Cow", new string[] { "음머...", "음머ㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓㅓ?" });
+        talkData.Add("Cow", new string[] { "음머...(안녕...)", "(저기 왼쪽에 있는 닭한테 가면 미니게임을 할 수 있어)음머ㅓㅓ"," 미니게임도 준비되있으니까 잘 찾아봐" });
         imageData.Add("Cow", npcsprite);
     }
 

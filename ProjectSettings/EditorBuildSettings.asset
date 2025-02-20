@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniGameScene.unity
     guid: a5becd02929ab0a43814628c93baf37b
+  - enabled: 1
+    path: Assets/Scenes/BarbecueGameScene.unity
+    guid: 5a1853d1afcd6d14c9aface316e13d27
   m_configObjects: {}

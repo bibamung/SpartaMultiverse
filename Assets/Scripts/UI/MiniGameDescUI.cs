@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -8,6 +9,8 @@ public class MiniGameDescUI : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public RawImage rawImage;
+
+    public TMP_Text leaderBoardScore;
 
     [SerializeField] private float minX = 13f; // 카메라 이동 최소 X
     [SerializeField] private float maxX = 16.7f;  // 카메라 이동 최대 X
@@ -28,6 +31,8 @@ public class MiniGameDescUI : MonoBehaviour
         RenderTexture renderTexture = new RenderTexture(1920, 1080, 32);
         videoPlayer.targetTexture = renderTexture;
         rawImage.texture = renderTexture;
+
+        leaderBoardScore.text = PlayerPrefs.GetInt("Flappy_BestScore").ToString();
     }
     private void Update()
     {
