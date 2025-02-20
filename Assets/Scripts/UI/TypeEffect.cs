@@ -8,7 +8,8 @@ public class TypeEffect : MonoBehaviour
 {
     public int charPerSeconds;
     public GameObject endCursor;
-
+    TextMeshPro t;
+    TextMeshProUGUI tGUI;
     TMP_Text msgText;
     
     string targetMsg;
@@ -16,7 +17,6 @@ public class TypeEffect : MonoBehaviour
     
     public void SetMsg(string msg)
     {
-        Debug.Log(msg);
         targetMsg = msg;
         EffectStart();
     }

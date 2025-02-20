@@ -7,7 +7,6 @@ public class ChickenInteraction : MonoBehaviour, IInteractable
 {
     public void Interact()
     {
-        Debug.Log(gameObject.name + "와(과) 상호작용했습니다!");
 
         //이전 씬 저장
         PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);

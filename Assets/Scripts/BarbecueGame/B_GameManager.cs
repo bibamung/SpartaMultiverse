@@ -29,7 +29,6 @@ public class B_GameManager : MonoBehaviour
 
         gameOverPanel.SetActive(true);
 
-        Debug.Log("Game Over!");
     }
 
     IEnumerator SpawnMeat()

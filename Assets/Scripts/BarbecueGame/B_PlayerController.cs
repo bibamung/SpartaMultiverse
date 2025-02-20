@@ -77,7 +77,6 @@ public class B_PlayerController : MonoBehaviour
         {
             score ++;
             Destroy(collision.gameObject);
-            Debug.Log("Score: " + score);
             gameUI.AddScore(gameObject.name, 1);
         }
     }

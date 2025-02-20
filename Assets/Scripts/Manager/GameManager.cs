@@ -36,8 +36,6 @@ public class GameManager : MonoBehaviour
         //isAction = true;            
         scanObject = scanObj;
 
-        Debug.Log("오브젝트 이름: " + scanObject.name);
-
         Talk(scanObject.name);
         
         dialogPanel.SetActive(isAction);

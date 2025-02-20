@@ -71,7 +71,6 @@ public class MiniGameManager : MonoBehaviour
             return;
         }
         currentScore += score;
-        Debug.Log($"Score: {currentScore}");
         uiManager.ChangeScore(currentScore);
     }
 }
