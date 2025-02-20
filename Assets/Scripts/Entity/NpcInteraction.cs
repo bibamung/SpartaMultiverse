@@ -22,4 +22,10 @@ public class NpcInteraction : MonoBehaviour, IInteractable
 
         SceneManager.LoadScene("BarbecueGameScene");
     }
+
+
+    public void Interact(PlayerController player)
+    {
+        //
+    }
 }

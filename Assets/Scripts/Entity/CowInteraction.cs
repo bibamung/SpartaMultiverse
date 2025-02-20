@@ -13,4 +13,9 @@ public class CowInteraction : MonoBehaviour, IInteractable
 
         GameManager.instance.Action(_gameObject);
     }
+
+    public void Interact(PlayerController player)
+    {
+        //
+    }
 }

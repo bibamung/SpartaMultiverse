@@ -6,21 +6,28 @@ public class PlayerController : BaseController
 {
     private Camera _camera;
     [SerializeField] private float interactionRange = 1.5f;
+    [SerializeField] private Sprite originalSprite;  // 원래 플레이어 스프라이트 저장
+
 
     public bool isPlayed = false;
-
-    Rigidbody2D rigidbody;
+  
     Vector3 dirVec;
     UIManager uIManager;
     GameManager gameManager;
-
     GameObject scanObject;
+    private SpriteRenderer spriteRenderer;
+    
+    
+    public bool isInsideJeep = false;  // 차량 탑승 여부
+    public float moveSpeedMultiplier = 1f;// 이동 속도 배율
+
 
     protected override void Awake()
     {
         base.Awake();
-        rigidbody = GetComponent<Rigidbody2D>();
         gameManager = GameManager.instance;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        originalSprite = spriteRenderer.sprite;
     }
 
     protected override void Start()
@@ -64,10 +71,15 @@ public class PlayerController : BaseController
         foreach (Collider2D collider in hitColliders)
         {
             IInteractable interactable = collider.GetComponent<IInteractable>();
-            if (interactable != null)
+            if (interactable != null && collider.tag != "Vehicle")
             {
                 interactable.Interact(); // 상호작용 실행
                 break; // 한 개의 오브젝트만 상호작용
+            }
+            else if (interactable != null && collider.tag == "Vehicle")
+            {
+                interactable.Interact(this);
+                break;
             }
         }
     }
@@ -76,6 +88,17 @@ public class PlayerController : BaseController
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, interactionRange);
+    }
+
+
+    public void SetSprite(Sprite newSprite)
+    {
+        spriteRenderer.sprite = newSprite;
+    }
+
+    public void RestoreSprite()
+    {
+        spriteRenderer.sprite = originalSprite;
     }
 
 }

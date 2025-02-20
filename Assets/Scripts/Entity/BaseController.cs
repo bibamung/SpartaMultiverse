@@ -3,18 +3,10 @@ using UnityEngine;
 public class BaseController : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
-
     [SerializeField] private SpriteRenderer characterRenderer;
-    [SerializeField] private Transform weaponPivot;
-
+    
     protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return movementDirection; } }
-
-    //protected Vector2 lookDirection = Vector2.zero;
-    //public Vector2 LookDirection { get { return lookDirection; } }
-
-    /*private Vector2 knockback = Vector2.zero;
-    private float knockbackDuration = 0.0f;*/
 
     protected AnimationHandler animationHandler;
 
@@ -46,11 +38,24 @@ public class BaseController : MonoBehaviour
 
     private void Movment(Vector2 direction)
     {
-        direction = direction * 5;
+        /*direction = direction * 5;
         
         _rigidbody.velocity = direction;
 
+        animationHandler.UpdateDirection(direction);*/
+        PlayerController player = GetComponent<PlayerController>();
+
+        float speed = 5f;
+        if (player != null)
+        {
+            speed *= player.moveSpeedMultiplier; //탑승 여부에 따라 속도 증가
+        }
+
+        direction = direction * speed;
+        _rigidbody.velocity = direction;
+
         animationHandler.UpdateDirection(direction);
+
     }
 
 }

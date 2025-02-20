@@ -22,4 +22,9 @@ public class ChickenInteraction : MonoBehaviour, IInteractable
 
         SceneManager.LoadScene("MiniGameScene");
     }
+
+    public void Interact(PlayerController player)
+    {
+        //
+    }
 }
