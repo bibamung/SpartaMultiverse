@@ -13,7 +13,7 @@ public class TypeEffect : MonoBehaviour
     
     string targetMsg;
     int index;
-
+    
     public void SetMsg(string msg)
     {
         Debug.Log(msg);
