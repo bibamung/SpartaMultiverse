@@ -20,13 +20,13 @@
     - [x]  NPC와 대화 시스템
 - 조작 키
 
-<aside>
 
-- 이동키 : W,A,S,D or 방향키
-- 상호작용 키 : G키
-- FlappyPlane 점프키: space or 마우스 우클릭
-- 바베큐 게임키 (음식 찌르기게임): 1P → W키,  2P → ↑ 윗방향키
-</aside>
+
+[!NOTE] - 이동키 : W,A,S,D or 방향키
+[!NOTE] - 상호작용 키 : G키
+[!NOTE] - FlappyPlane 점프키: space or 마우스 우클릭
+[!NOTE] - 바베큐 게임키 (음식 찌르기게임): 1P → W키,  2P → ↑ 윗방향키
+
 
 - 트러블 슈팅
     
